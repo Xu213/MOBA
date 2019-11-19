@@ -30,12 +30,15 @@ export default {
   },
   data() {
     return {
-      model: {}
+      model: {
+        name: "",
+        icon: ""
+      }
     };
   },
   methods: {
     afterUpload(res) {
-      this.$set(this.model, "icon", res.url);
+      this.model.icon = res.url;
     },
     async save() {
       let res;
