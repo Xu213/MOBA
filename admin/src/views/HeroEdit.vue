@@ -2,7 +2,7 @@
   <div class="content">
     <h1>{{id?'编辑':'新建'}}英雄</h1>
     <el-form label-width="80px" @submit.native.prevent="save()">
-      <el-tabs type="border-card" value="skills">
+      <el-tabs type="border-card">
         <el-tab-pane label="基础信息">
           <el-form-item label="名称">
             <el-input v-model="model.name"></el-input>
@@ -180,41 +180,5 @@ export default {
 <style>
 .content {
   overflow: hidden;
-}
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.el-upload .avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 6rem;
-  height: 6rem;
-  line-height: 6rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.avatar {
-  width: 6rem;
-  height: 6rem;
-  display: block;
-}
-.scores {
-  display: flex;
-  flex-wrap: wrap;
-}
-.scores .el-rate {
-  margin: 0.6rem 0;
-  width: 400px;
-}
-.el-textarea textarea {
-  height: 100px;
 }
 </style>
