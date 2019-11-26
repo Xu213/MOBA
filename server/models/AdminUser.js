@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
 	username: { type: String },
 	password: {
 		type: String,
-		select: true,
+		select: false,
 		set(val) {
 			// 引入包bcrypt对密码散列
 			return require("bcrypt").hashSync(val, 10);
