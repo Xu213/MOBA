@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
 	username: { type: String },
 	password: {
-		type: String
-		// select: true,
-		// set(val) {
-		// 	return require("bcrypt").hashSync(val, 10);
-		// }
+		type: String,
+		select: true,
+		set(val) {
+			// 引入包bcrypt对密码散列
+			return require("bcrypt").hashSync(val, 10);
+		}
 	}
 });
 
