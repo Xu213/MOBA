@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 100vh;">
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu router unique-opened default-active="$route.path">
+      <el-menu router unique-opened :default-openeds="['2','3']" default-active="$route.path">
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-message"></i>内容管理
@@ -51,8 +51,21 @@
     </el-aside>
 
     <el-container>
-      <el-header style="text-align: right; font-size: 12px"></el-header>
-
+      <el-header style="text-align: right; font-size: 12px">
+        Supper Man
+        <label
+          style="color:blue;cursor:pointer"
+          @click="supperOption=!supperOption"
+        >{{username}}</label>
+        <el-button
+          round
+          size="mini"
+          v-if="supperOption"
+          type="danger"
+          @click="LoginOut"
+          style="margin: 0 .5rem;"
+        >注销</el-button>
+      </el-header>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -75,7 +88,29 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      supperOption: false,
+      id: "",
+      username: ""
+    };
+  },
+  methods: {
+    LoginOut() {
+      sessionStorage.clear();
+      this.$router.push("/login");
+      this.$message({
+        type: "success",
+        message: "注销成功！"
+      });
+    },
+    async fetch() {
+      this.id = sessionStorage.id;
+      const res = await this.$http.get(`rest/admin_users/${this.id}`);
+      this.username = res.data.username;
+    }
+  },
+  created() {
+    this.fetch();
   }
 };
 </script>
