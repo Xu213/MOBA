@@ -1,2 +1,2 @@
-D:\MongoDB\bin\mongod -dbpath C:\Data\db
+D:\MongoDB\bin\mongod -dbpath .\db
 pause
